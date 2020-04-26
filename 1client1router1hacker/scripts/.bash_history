@@ -44,3 +44,36 @@ ping 8.8.8.8
 ping 8.8.8.8
 ip a
 exit
+ping 8.8.8.8
+traceroute 8.8.8.
+traceroute 8.8.8.8
+apt install curl
+curl www.h2prog.com
+man curl
+ls
+curl www.google.fr
+curl https://www.h2prog.com
+exit
+ip a
+ping 8.8.8.8
+tcpdump -i eth0 port 80
+tcpdump -i eth0 port 443
+exit
+ip a
+tcpdump -i eth0 port 443
+exit
+tcpdump -i eth0 port 443
+tcpdump -i eth0 port 443 -vv
+tcpdump -A -i eth0 port 443 -vv
+tcpdump -A -i eth0 port 443 -vv
+exit
+tcpdump -A -i eth0 port 80 -vv
+exit
+tcpdump -A -i eth0 port 80 -vv
+exit
+ip r
+ping 8.8.8.8
+tcpdump -i eth0 
+cd root/
+ls
+exit

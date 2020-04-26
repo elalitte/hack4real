@@ -21,7 +21,7 @@ services:
       - ALL
     volumes:
       - ./scripts:/root/
-    command: /root/change_default_gw.sh
+    command: /root/change_default_gw_client.sh
     networks:
       local_net:
         ipv4_address: 172.16.200.102
@@ -30,6 +30,9 @@ services:
     image: elalitte/debian_client01
     cap_add:
       - ALL
+    volumes:
+      - ./scripts:/tmp
+    command: /tmp/change_default_gw_hacker.sh
     sysctls:
       - net.ipv4.ip_forward=1
     networks:
