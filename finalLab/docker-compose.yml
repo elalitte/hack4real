@@ -1,0 +1,67 @@
+version: '2.1'
+
+services:
+
+  router:
+    image: elalitte/debian_client01
+    cap_add:
+      - ALL
+    volumes:
+      - ./scripts:/root/
+    command: /root/activateNAT.sh
+    hostname: router
+    networks:
+      local_net:
+        ipv4_address: 172.16.200.254
+      private_net:
+        ipv4_address: 172.16.201.254
+
+  hackedServer:
+    image: elalitte/debian_client01
+    cap_add:
+      - ALL
+    volumes:
+      - ./scripts:/root/
+    command: /root/change_routing_client.sh
+    hostname: hackedServer
+    networks:
+      local_net:
+        ipv4_address: 172.16.200.101
+
+  web:
+    image: elalitte/debian_client01
+    cap_add:
+      - ALL
+    volumes:
+      - ./web:/root/
+    command: /root/change_routing_web.sh
+    hostname: web
+    networks:
+      local_net:
+        ipv4_address: 172.16.200.102
+
+  accountability:
+    image: elalitte/debian_client01
+    cap_add:
+      - ALL
+    volumes:
+      - ./scripts:/tmp
+    command: /tmp/change_routing_accountability.sh
+    hostname: accountability
+    networks:
+      private_net:
+        ipv4_address: 172.16.201.2
+
+networks:
+  local_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.200.0/24
+          gateway: 172.16.200.1
+  private_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.201.0/24
+          gateway: 172.16.201.1
