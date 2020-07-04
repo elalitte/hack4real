@@ -21,7 +21,7 @@ services:
     cap_add:
       - ALL
     volumes:
-      - ./scripts:/root/
+      - ./hackedServer:/root/
     command: /root/change_routing_client.sh
     hostname: hackedServer
     networks:
@@ -45,8 +45,9 @@ services:
     cap_add:
       - ALL
     volumes:
-      - ./scripts:/tmp
-    command: /tmp/change_routing_accountability.sh
+      - ./accountability:/home
+      - ./secret:/root
+    command: /home/change_routing_accountability.sh
     hostname: accountability
     networks:
       private_net:
